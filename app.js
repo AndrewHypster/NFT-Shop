@@ -8,7 +8,7 @@ switch (path) {
   case "/":
     root.appendChild(Main());
     break;
-  case "pages/about":
+  case "/about":
     root.appendChild(About());
     break;
   default:
