@@ -9,7 +9,7 @@ const routes = {
 const renderRoute = () => {
   const path = window.location.pathname;
   const root = document.getElementById("root");
-  root.innerHTML = routes[path] ? routes[path]() : "<h1>404 Not Found</h1>";
+  root.innerHTML = routes[path] ?? "<h1>404 Not Found</h1>";
 };
 
 // Викликаємо renderRoute під час завантаження
