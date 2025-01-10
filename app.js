@@ -1,17 +1,19 @@
 import Main from "/pages/main.js";
 import About from "/pages/about.js";
 
-const path = window.location.pathname;
-const root = document.getElementById("root");
+const routes = {
+  "/": Main(),
+  "/about": About(),
+};
 
-switch (path) {
-  case "/":
-    root.appendChild(Main());
-    break;
-  case "/about":
-    root.appendChild(About());
-    break;
-  default:
-    root.innerHTML = "<h1>Сторінка не знайдена</h1>";
-    break;
-}
+const renderRoute = () => {
+  const path = window.location.pathname;
+  const root = document.getElementById("root");
+  root.innerHTML = routes[path] ? routes[path]() : "<h1>404 Not Found</h1>";
+};
+
+// Викликаємо renderRoute під час завантаження
+window.onpopstate = renderRoute;
+document.addEventListener("DOMContentLoaded", () => {
+  renderRoute();
+});
